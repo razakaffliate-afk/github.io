@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="style.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-    body {
-    margin: 50;
+body {
+    margin: 20px;
     font-family: Arial, sans-serif;
     background: #f5f5f5;
 }
@@ -19,16 +19,18 @@
     justify-content: center;
     gap: 10px;
     padding: 15px;
+    flex-wrap: wrap;
 }
 
 .tab {
-    padding: 10px 25px;
+    padding: 10px 20px;
     border: none;
     border-radius: 20px;
     background: #aaa;
     color: white;
     font-weight: bold;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .tab.pink { background: #ffb9d9; color: #333; }
@@ -37,12 +39,12 @@
 
 /* ---------- BALLOT BOX ---------- */
 .ballot-box {
-    width: 90%;
+    width: 95%;
     max-width: 680px;
     margin: auto;
     background: white;
     border-radius: 15px;
-    padding: 15px;
+    padding: 10px;
     box-shadow: 0 0 10px #ccc;
 }
 
@@ -50,7 +52,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 5px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -67,51 +69,6 @@
     width: 100%;
     border: 1px solid #ddd;
     margin-top: 10px;
-}
-
-.row {
-    display: grid;
-    grid-template-columns: 60px 1fr 80px 80px;
-    align-items: center;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 14px;
-    font-size: 19px;
-}
-
-.row:nth-child(odd) {
-    background: #fafafa;
-}
-
-.col.number {
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.col.name {
-    font-size: 20px;
-    padding-left: 10px;
-}
-
-.col.light .red-dot {
-    width: 20px;
-    height: 20px;
-    background: #8c0000;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.col.btn button {
-    width: 60px;
-    height: 34px;
-    background: #083c75;
-    border: none;
-    border-radius: 10px;
-}
-/* Container for all rows */
-.ballot-table {
-    width: 100%;
-    border-collapse: collapse;
     position: relative;
 }
 
@@ -119,7 +76,7 @@
 .ballot-table::before {
     content: "";
     position: absolute;
-    left: 60px;              /* after serial number column */
+    left: 50px;              
     top: 0;
     width: 2px;
     height: 100%;
@@ -130,34 +87,123 @@
 .ballot-table::after {
     content: "";
     position: absolute;
-    right: 140px;           /* adjust based on column width */
+    right: 120px;           
     top: 0;
     width: 2px;
     height: 100%;
     background: #cfcfcf;
 }
-.ready-indicator {
-    width: 18px;          /* bigger */
-    height: 18px;         /* bigger */
-    background: #00cc2d;  /* brighter green */
+
+.row {
+    display: grid;
+    grid-template-columns: 50px 1fr 60px 60px;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.row:nth-child(odd) {
+    background: #fafafa;
+}
+
+.col.number {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.col.name {
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+.col.light .red-dot {
+    width: 18px;
+    height: 18px;
+    background: #8c0000;
     border-radius: 50%;
     display: inline-block;
-    box-shadow: 0 0 6px #00ff55; /* soft glow */
-    margin-left: 8px;
 }
-/* Hover highlight for the vote button */
+
 .col.btn button {
+    width: 50px;
+    height: 30px;
+    background: #083c75;
+    border: none;
+    border-radius: 10px;
     transition: 0.2s ease;
-    cursor: pointer; /* hand cursor */
+    cursor: pointer;
 }
 
 .col.btn button:hover {
-    background: #0a5cb5;       /* lighter blue highlight */
+    background: #0a5cb5;
     box-shadow: 0 0 8px #0a5cb5;
-    transform: scale(1.05);    /* slight zoom */
+    transform: scale(1.05);
 }
 
-    </style>
+.ready-indicator {
+    width: 16px;          
+    height: 16px;         
+    background: #00cc2d;  
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 6px #00ff55; 
+    margin-left: 8px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 480px) {
+    body {
+        margin: 10px;
+    }
+
+    .tab {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .ballot-box {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .header {
+        flex-direction: row;
+        font-size: 16px;
+        gap: 5px;
+    }
+
+    .row {
+        grid-template-columns: 40px 1fr 50px 50px;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .col.name {
+        font-size: 14px;
+    }
+
+    .col.btn button {
+        width: 45px;
+        height: 28px;
+    }
+
+    .ballot-table::before {
+        left: 40px;
+    }
+
+    .ballot-table::after {
+        right: 110px;
+    }
+
+    .col.name img {
+        width: 50px !important;
+        height: 50px !important;
+    }
+}
+</style>
+
 </head>
 <body>
 
