@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ballot Unit</title>
+<link rel="stylesheet" href="style.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    body {
+    margin: 50;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+/* ---------- TABS ---------- */
+.top-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+}
+
+.tab {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    background: #aaa;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tab.pink { background: #ffb9d9; color: #333; }
+.tab.blue { background: #cdd8e5; color: #333; }
+.tab.active { background: #777; }
+
+/* ---------- BALLOT BOX ---------- */
+.ballot-box {
+    width: 90%;
+    max-width: 680px;
+    margin: auto;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ready .dot {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background: green;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.ballot-table {
+    width: 100%;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 60px 1fr 80px 80px;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 14px;
+    font-size: 19px;
+}
+
+.row:nth-child(odd) {
+    background: #fafafa;
+}
+
+.col.number {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.col.name {
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.col.light .red-dot {
+    width: 20px;
+    height: 20px;
+    background: #8c0000;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.col.btn button {
+    width: 60px;
+    height: 34px;
+    background: #083c75;
+    border: none;
+    border-radius: 10px;
+}
+/* Container for all rows */
+.ballot-table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+}
+
+/* Draw the FIRST continuous line after serial number */
+.ballot-table::before {
+    content: "";
+    position: absolute;
+    left: 60px;              /* after serial number column */
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #cfcfcf;
+}
+
+/* Draw the SECOND continuous line before buttons */
+.ballot-table::after {
+    content: "";
+    position: absolute;
+    right: 140px;           /* adjust based on column width */
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #cfcfcf;
+}
+.ready-indicator {
+    width: 18px;          /* bigger */
+    height: 18px;         /* bigger */
+    background: #00cc2d;  /* brighter green */
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 6px #00ff55; /* soft glow */
+    margin-left: 8px;
+}
+/* Hover highlight for the vote button */
+.col.btn button {
+    transition: 0.2s ease;
+    cursor: pointer; /* hand cursor */
+}
+
+.col.btn button:hover {
+    background: #0a5cb5;       /* lighter blue highlight */
+    box-shadow: 0 0 8px #0a5cb5;
+    transform: scale(1.05);    /* slight zoom */
+}
+
+    </style>
+</head>
+<body>
+
+<div class="top-tabs">
+    <button class="tab active">Ward</button>
+    <button class="tab pink">Block</button>
+    <button class="tab blue">District</button>
+</div>
+
+<div class="ballot-box">
+    <div class="header">
+        <span class="ready">Ready <span class="ready-indicator"></span></span>
+        <span class="unit">Ballot Unit 1</span>
+    </div>
+
+    <div class="ballot-table">
+
+        <!-- Row -->
+        <div class="row">
+            <div class="col number">1</div>
+            <div class="col name"></div>
+            <div class="col light"><span class="red-dot"></span></div>
+            <div class="col btn"><button></button></div>
+        </div>
+
+        <div class="row">
+            <div class="col number">2</div>
+            <div class="col name" style="display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;"><strong>ഫൗസിയ കെ.വി </strong><span><img style="width:70px;height:70px;" src="hand (2).png" alt="symbol"></span></div>
+     
+            <div class="col light"><span class="red-dot"></span></div>
+            <div class="col btn"><button></button></div>
+        </div>
+
+        <!-- Empty rows -->
+        <!-- Repeat until 10 -->
+        <div class="row"><div class="col number">3</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row"><div class="col number">4</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row"><div class="col number">5</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row"><div class="col number">6</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row"><div class="col number">7</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row"><div class="col number">8</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row"><div class="col number">9</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row"><div class="col number">10</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+
+    </div>
+</div>
+
+
+<!-- Beep Sound -->
+<audio id="beepSound" src="https://files.catbox.moe/6k1m0p.mp3"></audio>
+
+
+
+
+<script>
+/* ---------- Web Audio beep (reliable) ---------- */
+let audioCtx = null;
+
+function ensureAudioContext() {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    // Some browsers require a resume on first gesture
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    return audioCtx;
+}
+
+/**
+ * Play a long EVM-like beep.
+ * durationSeconds: how long the beep runs (1.2 recommended)
+ * options.type: oscillator type (sine/square/triangle/sawtooth). square is harsher.
+ */
+function playLongBeep(durationSeconds = 1.2, options = {}) {
+    const ctx = ensureAudioContext();
+    const type = options.type || 'square';
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    // Oscillator
+    osc.type = type;
+    // A pitch similar to real EVM beep (around 600-900Hz) - slight detune for character
+    osc.frequency.setValueAtTime(750, ctx.currentTime);
+    osc.detune && osc.detune.setValueAtTime(0, ctx.currentTime);
+
+    // Gain envelope: quick attack, steady, then fade out
+    const now = ctx.currentTime;
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.linearRampToValueAtTime(0.22, now + 0.01);            // attack
+    gain.gain.setValueAtTime(0.22, now + 0.02);                    // sustain
+    gain.gain.setValueAtTime(0.22, now + durationSeconds - 0.08);  // keep till near end
+    gain.gain.linearRampToValueAtTime(0.0001, now + durationSeconds); // release
+
+    // Connect and play
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + durationSeconds + 0.02);
+
+    // cleanup after stop
+    osc.onended = function() {
+        try { osc.disconnect(); } catch(e) {}
+        try { gain.disconnect(); } catch(e) {}
+    };
+}
+
+/* ---------- UI behavior for Fousiya KV row ---------- */
+$(document).ready(function () {
+    // Index 1 is second row (zero-based)
+    const $row = $(".row").eq(1);
+    const $btn = $row.find(".col.btn button");
+    const $redDot = $row.find(".red-dot");
+    const $ready = $(".ready-indicator");
+
+    // make sure button shows pointer and hover (if not already)
+    $btn.css({
+        cursor: "pointer",
+        transition: "transform .12s ease, box-shadow .12s ease, background .12s ease"
+    });
+
+    // optional: hover class for visual feedback (also keep your CSS)
+    $btn.hover(
+        function() { $(this).css({"transform":"scale(1.06)", "box-shadow":"0 0 10px rgba(10,92,181,0.8)"}); },
+        function() { $(this).css({"transform":"scale(1)","box-shadow":"none"}); }
+    );
+
+    // click handler
+    $btn.on("click", function (e) {
+        // ensure AudioContext is ready on click
+        ensureAudioContext();
+
+        // Play the long beep (1.2s). Use 'square' for harsher EVM tone.
+        playLongBeep(1.2, { type: "square" });
+
+        // Glow the red light
+        $redDot.css({
+            "background": "#ff0000",
+            "box-shadow": "0 0 18px rgba(255,0,0,0.9)",
+            "transition": "box-shadow .2s ease, background .2s ease"
+        });
+
+        // change Ready indicator to RED
+        $ready.css({
+            "background": "#ff0000",
+            "box-shadow": "0 0 8px rgba(255,0,0,0.9)",
+            "transition": "box-shadow .2s ease, background .2s ease"
+        });
+
+        // show success popup
+        // alert("Vote Submitted Successfully!");
+
+        // disable the button so it can't be re-clicked
+        $btn.prop("disabled", true);
+        $btn.css({ opacity: 0.6, cursor: "not-allowed", transform: "scale(1)" });
+        setTimeout(function() {
+        window.location.href = "confirmation.html";
+    }, 1200); 
+
+     
+    });
+});
+</script>
+
+</body>
+</html>
