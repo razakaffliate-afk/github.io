@@ -109,7 +109,7 @@ body {
 
 /* Button */
 .vote-again {
-    margin-top: 20px;
+    margin-top: -44px;
     background: white;
     padding: 10px 25px;
     border-radius: 25px;
@@ -118,6 +118,7 @@ body {
     cursor: pointer;
     font-weight: bold;
     transition: 0.2s;
+    z-index:99;
 }
 .vote-again:hover {
     background: #123d77;
@@ -126,15 +127,23 @@ body {
 
 /* Popup Overlay */
 #successPopup {
-    display: flex; /* use flex for centering */
-    justify-content: center;
-    align-items: center;
     position: fixed;
     top: 0; left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 9999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#successPopup.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 #successPopup .popupContent {
@@ -144,8 +153,9 @@ body {
     text-align: center;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
     animation: popupScale 0.3s ease;
-    max-width: 300px;
-    width: 90%;
+    /* max-width: 300px; */
+    width: 100%;
+    height:100vh;
 }
 
 #successPopup .tick {
@@ -185,6 +195,20 @@ body {
     #successPopup .popupContent {
         padding: 20px 15px;
     }
+    .ribbon {
+        width: 60%;
+        max-width: 150px;
+    }
+    .badge {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+    .badge span.check {
+        width: 12px;
+        height: 12px;
+        font-size: 10px;
+        line-height: 12px;
+    }
 }
 </style>
 </head>
@@ -201,7 +225,7 @@ body {
 
 <!-- Malayalam Top Heading -->
 <div class="heading">
-    <img src="2.webp" alt="heading">
+    <img src="2.webp" style="width: 100%;" alt="heading">
 </div>
 
 <!-- Main Card -->
@@ -223,16 +247,15 @@ body {
 
 <script>
 $(document).ready(function () {
-    // Show popup on page load
-    $("#successPopup").fadeIn(200);
+    // Ensure popup is visible on page load
+    $("#successPopup").removeClass('hidden');
 
     // Hide popup automatically after 5 seconds
     setTimeout(function() {
-        $("#successPopup").fadeOut(300);
-    }, 5000);
+        $("#successPopup").addClass('hidden');
+    }, 2000);
 });
 </script>
 
 </body>
 </html>
-
