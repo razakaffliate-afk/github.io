@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voting Completed</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+body {
+    margin: 0;
+    background: #ffffff;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Top Malayalam Heading */
+.heading {
+    font-size: 26px;
+    line-height: 38px;
+    font-weight: 700;
+    color: #003366;
+    margin-bottom: 20px;
+}
+
+/* Card box */
+.vote-card {
+    width: 100%;
+    max-width: 360px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Image area */
+.photo {
+    width: 100%;
+    background: #356c53;
+    height: auto;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px 20px 0 0;
+}
+
+/* Voted Badge */
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #123d77;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.badge span.check {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: white;
+    color: #123d77;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    text-align: center;
+}
+
+/* Candidate details */
+.details {
+    padding: 15px 20px;
+}
+.name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #27275a;
+    margin-bottom: 6px;
+}
+.sub {
+    font-size: 12px;
+    line-height: 18px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Ribbon */
+.ribbon {
+    width: 50%;
+    max-width: 180px;
+    margin-top: -10px;
+}
+
+/* Button */
+.vote-again {
+    margin-top: -44px;
+    background: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: 2px solid #123d77;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+    z-index:99;
+}
+.vote-again:hover {
+    background: #123d77;
+    color: white;
+}
+
+/* Popup Overlay */
+#successPopup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#successPopup.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#successPopup .popupContent {
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    animation: popupScale 0.3s ease;
+    /* max-width: 300px; */
+    width: 100%;
+    height:100vh;
+}
+
+#successPopup .tick {
+    font-size: 48px;
+    color: #28a745; /* green */
+    margin-bottom: 15px;
+}
+
+#successPopup .message {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+#successPopup span {
+    font-size: 16px;
+    color: #333;
+}
+
+@keyframes popupScale {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 400px) {
+    .vote-card {
+        padding-bottom: 15px;
+    }
+    .details .name {
+        font-size: 20px;
+    }
+    .vote-again {
+        font-size: 14px;
+        padding: 8px 20px;
+    }
+    #successPopup .popupContent {
+        padding: 20px 15px;
+    }
+    .ribbon {
+        width: 60%;
+        max-width: 150px;
+    }
+    .badge {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+    .badge span.check {
+        width: 12px;
+        height: 12px;
+        font-size: 10px;
+        line-height: 12px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Success Popup -->
+<div id="successPopup">
+    <div class="popupContent">
+        <div class="tick">&#10004;</div>
+        <div class="message">Vote Successfully Completed!</div>
+        <span>നിങ്ങളുടെ വോട്ട് വിജയകരമായി പൂർത്തീകരിച്ചിട്ടുണ്ട്</span>
+    </div>
+</div>
+
+<!-- Malayalam Top Heading -->
+<div class="heading">
+    <!-- <img src="2.webp" style="width: 100%;" alt="heading"> -->
+</div>
+
+<!-- Main Card -->
+<div class="vote-card">
+    <div class="photo">
+        <img src="block.jpeg" alt="candidate">
+        <div class="badge">
+            Voted <span class="check">✓</span>
+        </div>
+    </div>
+    <div class="details">
+        <div class="name">സജ്‌ന ഫിറോസ്</div>
+    </div>
+    <img src="ribbon.png" class="ribbon" alt="ribbon">
+</div>
+
+<!-- Vote Again Button -->
+<button class="vote-again" onclick="window.location.href='index.html'">Vote Again</button>
+
+<script>
+$(document).ready(function () {
+    // Ensure popup is visible on page load
+    $("#successPopup").removeClass('hidden');
+
+    // Hide popup automatically after 5 seconds
+    setTimeout(function() {
+        $("#successPopup").addClass('hidden');
+    }, 2000);
+});
+</script>
+
+</body>
+</html>
