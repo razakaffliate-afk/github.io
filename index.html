@@ -208,12 +208,13 @@ body {
 <body>
 
 <div class="top-tabs">
-    <button class="tab active">Ward</button>
-    <button class="tab pink">Block</button>
-    <button class="tab blue">District</button>
+    <button class="tab active" data-target="#ballot-ward">Ward</button>
+<button class="tab pink" data-target="#ballot-block">Block</button>
+<button class="tab blue" data-target="#ballot-district">District</button>
+  
 </div>
 
-<div class="ballot-box">
+<div class="ballot-box tab-content" id="ballot-ward">
     <div class="header">
         <span class="ready">Ready <span class="ready-indicator"></span></span>
         <span class="unit">Ballot Unit 1</span>
@@ -253,7 +254,85 @@ body {
 
     </div>
 </div>
+<div class="ballot-box tab-content" id="ballot-block"  style="display:none;">
+    <div class="header">
+        <span class="ready">Ready <span class="ready-indicator"></span></span>
+        <span class="unit">Ballot Unit 1</span>
+    </div>
 
+    <div class="ballot-table" >
+
+        <!-- Row -->
+        <div class="row" style="background: #ffb9d9;">
+            <div class="col number">1</div>
+            <div class="col name"></div>
+            <div class="col light"><span class="red-dot"></span></div>
+            <div class="col btn"><button></button></div>
+        </div>
+ <div class="row" style="background: #ffb9d9;"><div class="col number">2</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #ffb9d9;">
+            <div class="col number">3</div>
+            <div class="col name" style="display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;"><strong>സജ്‌ന ഫിറോസ് </strong><span><img style="width:70px;height:70px;" src="hand_congress.png" alt="symbol"></span></div>
+     
+            <div class="col light"><span class="red-dot"></span></div>
+            <div class="col btn"><button></button></div>
+        </div>
+
+        <!-- Empty rows -->
+        <!-- Repeat until 10 -->
+        <div class="row" style="background: #ffb9d9;"><div class="col number">4</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #ffb9d9;"><div class="col number">5</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #ffb9d9;"><div class="col number">6</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #ffb9d9;"><div class="col number">7</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #ffb9d9;"><div class="col number">8</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #ffb9d9;"><div class="col number">9</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #ffb9d9;"><div class="col number">10</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+       
+    </div>
+</div>
+<div class="ballot-box tab-content" id="ballot-district" style="display:none">
+    <div class="header">
+        <span class="ready">Ready <span class="ready-indicator"></span></span>
+        <span class="unit">Ballot Unit 1</span>
+    </div>
+
+    <div class="ballot-table">
+
+        <!-- Row -->
+        <div class="row" style="background: #cdd8e5;">
+            <div class="col number">1</div>
+            <div class="col name"></div>
+            <div class="col light"><span class="red-dot"></span></div>
+            <div class="col btn"><button></button></div>
+        </div>
+
+        <div class="row" style="background: #cdd8e5;">
+            <div class="col number">2</div>
+            <div class="col name" style="display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;"><strong>അഷ്‌ഹർ  പെരുമുക്ക് </strong><span><img style="width:70px;height:70px;" src="Indian_Election_Symbol_Lader.svg" alt="symbol"></span></div>
+     
+            <div class="col light"><span class="red-dot"></span></div>
+            <div class="col btn"><button></button></div>
+        </div>
+
+        <!-- Empty rows -->
+        <!-- Repeat until 10 -->
+        <div class="row" style="background: #cdd8e5;"><div class="col number">3</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #cdd8e5;"><div class="col number">4</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #cdd8e5;"><div class="col number">5</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #cdd8e5;"><div class="col number">6</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #cdd8e5;"> <div class="col number">7</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #cdd8e5;"><div class="col number">8</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #cdd8e5;"><div class="col number">9</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+        <div class="row" style="background: #cdd8e5;"><div class="col number">10</div><div class="col name"></div><div class="col light"><span class="red-dot"></span></div><div class="col btn"><button></button></div></div>
+
+    </div>
+</div>
 
 <!-- Beep Sound -->
 <audio id="beepSound" src="https://files.catbox.moe/6k1m0p.mp3"></audio>
@@ -269,18 +348,12 @@ function ensureAudioContext() {
     if (!audioCtx) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     }
-    // Some browsers require a resume on first gesture
     if (audioCtx.state === 'suspended') {
         audioCtx.resume();
     }
     return audioCtx;
 }
 
-/**
- * Play a long EVM-like beep.
- * durationSeconds: how long the beep runs (1.2 recommended)
- * options.type: oscillator type (sine/square/triangle/sawtooth). square is harsher.
- */
 function playLongBeep(durationSeconds = 1.2, options = {}) {
     const ctx = ensureAudioContext();
     const type = options.type || 'square';
@@ -288,90 +361,82 @@ function playLongBeep(durationSeconds = 1.2, options = {}) {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
-    // Oscillator
     osc.type = type;
-    // A pitch similar to real EVM beep (around 600-900Hz) - slight detune for character
     osc.frequency.setValueAtTime(750, ctx.currentTime);
-    osc.detune && osc.detune.setValueAtTime(0, ctx.currentTime);
 
-    // Gain envelope: quick attack, steady, then fade out
     const now = ctx.currentTime;
     gain.gain.setValueAtTime(0.0001, now);
-    gain.gain.linearRampToValueAtTime(0.22, now + 0.01);            // attack
-    gain.gain.setValueAtTime(0.22, now + 0.02);                    // sustain
-    gain.gain.setValueAtTime(0.22, now + durationSeconds - 0.08);  // keep till near end
-    gain.gain.linearRampToValueAtTime(0.0001, now + durationSeconds); // release
+    gain.gain.linearRampToValueAtTime(0.22, now + 0.01);
+    gain.gain.setValueAtTime(0.22, now + durationSeconds - 0.08);
+    gain.gain.linearRampToValueAtTime(0.0001, now + durationSeconds);
 
-    // Connect and play
     osc.connect(gain);
     gain.connect(ctx.destination);
 
     osc.start(now);
     osc.stop(now + durationSeconds + 0.02);
 
-    // cleanup after stop
     osc.onended = function() {
-        try { osc.disconnect(); } catch(e) {}
-        try { gain.disconnect(); } catch(e) {}
+        try { osc.disconnect(); gain.disconnect(); } catch(e) {}
     };
 }
 
-/* ---------- UI behavior for Fousiya KV row ---------- */
 $(document).ready(function () {
-    // Index 1 is second row (zero-based)
-    const $row = $(".row").eq(1);
-    const $btn = $row.find(".col.btn button");
-    const $redDot = $row.find(".red-dot");
-    const $ready = $(".ready-indicator");
 
-    // make sure button shows pointer and hover (if not already)
-    $btn.css({
-        cursor: "pointer",
-        transition: "transform .12s ease, box-shadow .12s ease, background .12s ease"
+    /* ------ TAB SWITCHING ------ */
+    $(".tab").click(function () {
+        $(".tab").removeClass("active");
+        $(this).addClass("active");
+
+        $(".tab-content").hide();
+        let target = $(this).data("target");
+        $(target).fadeIn(150);
     });
 
-    // optional: hover class for visual feedback (also keep your CSS)
-    $btn.hover(
-        function() { $(this).css({"transform":"scale(1.06)", "box-shadow":"0 0 10px rgba(10,92,181,0.8)"}); },
-        function() { $(this).css({"transform":"scale(1)","box-shadow":"none"}); }
-    );
-
-    // click handler
-    $btn.on("click", function (e) {
-        // ensure AudioContext is ready on click
+    /* ------ VOTE BUTTON CLICK ------ */
+    $(".col.btn button").on("click", function () {
         ensureAudioContext();
-
-        // Play the long beep (1.2s). Use 'square' for harsher EVM tone.
         playLongBeep(1.2, { type: "square" });
 
-        // Glow the red light
-        $redDot.css({
+        let row = $(this).closest(".row");
+        let container = $(this).closest(".ballot-box");
+
+        let redDot = row.find(".red-dot");
+        let ready = container.find(".ready-indicator");
+
+        redDot.css({
             "background": "#ff0000",
             "box-shadow": "0 0 18px rgba(255,0,0,0.9)",
-            "transition": "box-shadow .2s ease, background .2s ease"
+            "transition": "0.3s"
         });
 
-        // change Ready indicator to RED
-        $ready.css({
+        ready.css({
             "background": "#ff0000",
-            "box-shadow": "0 0 8px rgba(255,0,0,0.9)",
-            "transition": "box-shadow .2s ease, background .2s ease"
+            "box-shadow": "0 0 12px rgba(255,0,0,0.9)",
+            "transition": "0.3s"
         });
 
-        // show success popup
-        // alert("Vote Submitted Successfully!");
+        $(this).prop("disabled", true).css({
+            opacity: 0.6, cursor: "not-allowed", transform: "scale(1)"
+        });
 
-        // disable the button so it can't be re-clicked
-        $btn.prop("disabled", true);
-        $btn.css({ opacity: 0.6, cursor: "not-allowed", transform: "scale(1)" });
-        setTimeout(function() {
-        window.location.href = "confirmation.html";
-    }, 1200); 
+        // Detect which box and redirect accordingly
+        let page = "confirmation.html";   // default
 
-     
+        if (container.attr("id") === "ballot-block") {
+            page = "confirmationblock.html";
+        } else if (container.attr("id") === "ballot-district") {
+            page = "confirmationdistrict.html";
+        }
+
+        setTimeout(function () {
+            window.location.href = page;
+        }, 1200);
     });
 });
+
 </script>
+
 
 </body>
 </html>
